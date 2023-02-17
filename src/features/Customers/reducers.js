@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { PENDING, REQUESTING, SUCCESS, ERROR } from '../../utilities/helpers';
 
 // The slice has 4 elements:
 // createSlice({name, initialState, reducers})
@@ -10,11 +11,11 @@ const customersSlice = createSlice({
     loading: false,
     form: {
       fields: {
-        id: null,
-        firstName: null,
-        lastName: null,
-        active: null,
-        region: null,
+        id: '',
+        firstName: '',
+        lastName: '',
+        active: '',
+        region: '',
       },
     },
     create: {

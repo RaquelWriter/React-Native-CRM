@@ -3,7 +3,7 @@ import * as actions from './reducers';
 
 export const useUpdateFields = () => {
   const dispatch = useDispatch();
-  const fields = useSelector((state) => state.customer.form.fields);
+  const fields = useSelector((state) => state.customers.form.fields);
 
   return {
     fields,
@@ -35,6 +35,8 @@ export const useEditCustomer = (customerID) => {
     },
   };
 };
+// TODO
+export const useResetForm = () => {};
 /* export const useListAnimals = () => {
   return useSelector((state) => state.animal.list.animals);
 }; */

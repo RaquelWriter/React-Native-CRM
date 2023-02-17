@@ -25,10 +25,6 @@ const stylesFn = () =>
       flex: 1,
       alignItems: 'center',
     },
-    form: {
-      height: 25,
-      width: '100%',
-    },
     buttons: {
       backgroundColor: '#00a081',
       borderRadius: 20,
@@ -42,6 +38,16 @@ const stylesFn = () =>
     },
     buttonCreate: {
       backgroundColor: '#0070a1',
+    },
+    form: {
+      height: 25,
+      width: '100%',
+      margin: 10,
+      borderWidth: 1,
+      backgroundColor: 'white',
+      borderColor: 'black',
+      borderRadius: 10,
+      padding: 5,
     },
   });
 
