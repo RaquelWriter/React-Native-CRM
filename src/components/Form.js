@@ -5,14 +5,10 @@ import { View, Text, TextInput, TouchableHighlight } from 'react-native';
 import { useUpdateFields } from '../features/Customers/hooks';
 import stylesFn from './styles';
 
-const Form = () => {
+const Form = ({ disabled = false }) => {
   const styles = stylesFn();
   const { params } = useRoute();
-  const { customerID } = params;
-  console.log('customerID :', customerID);
-  const { fields, setFormField } = useUpdateFields(customerID);
-  /*   const { onSubmit } = useEditAnimal(params.animalID); */
-  const [value, onChangeText] = useState('MiNombre');
+  const { fields, setFormField } = useUpdateFields(params);
 
   //const { firstName, lastName, region } = fields;
   // const {
@@ -24,30 +20,29 @@ const Form = () => {
   //     invasive
   // } = fields
 
-  const customer = useSelector((state) => {
-    return state.customers.customers.find((cust) => cust.id === customerID);
-  });
-  const { firstName, lastName, region } = customer;
+  const { id, firstName, lastName, region } = useSelector(
+    (state) => state.customers.form.fields
+  );
 
   return (
     <View style={styles.container}>
-      <Text style={styles.h2}>Customer ID: {customerID}</Text>
+      <Text style={styles.h2}>Customer ID: {id}</Text>
       <TextInput
-        key={firstName}
+        key={'firstName'}
         placeholder={firstName}
         value={firstName || ''}
         style={styles.form}
         onChangeText={(v) => setFormField('firstName', v)}
       />
       <TextInput
-        key={lastName}
+        key={'lastName'}
         placeholder={lastName}
         value={lastName || ''}
         style={styles.form}
         onChangeText={(v) => setFormField('lastName', v)}
       />
       <TextInput
-        key={region}
+        key={'region'}
         placeholder={region}
         value={region || ''}
         style={styles.form}

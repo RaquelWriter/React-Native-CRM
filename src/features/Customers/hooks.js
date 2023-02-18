@@ -4,7 +4,6 @@ import * as actions from './reducers';
 export const useUpdateFields = () => {
   const dispatch = useDispatch();
   const fields = useSelector((state) => state.customers.form.fields);
-
   return {
     fields,
     setFormField: (field, value) => {
