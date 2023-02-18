@@ -59,7 +59,7 @@ const customersSlice = createSlice({
       state.edit.status = SUCCESS;
       state.customers = payload;
     },
-    editCustomerError: (state) => {
+    editCustomerError: (state, { payload }) => {
       state.edit.status = ERROR;
       state.error.message = payload;
     },
@@ -76,16 +76,8 @@ const customersSlice = createSlice({
       };
       state.form.fields = fields;
     },
+    // updateFields called when user click on a customer for editing in Edit
     updateFields: (state, { payload }) => {
-      /*       const current = state.form.fields;
-      const { id, firstName, lastName, region } = payload;
-      const fields = {
-        ...current,
-        [id]: id,
-        [firstName]: firstName,
-        [lastName]: lastName,
-        [region]: region,
-      }; */
       console.log('DENTRO DEL REDUCER updateFields, payload: ', payload);
       state.form.fields = payload;
     },

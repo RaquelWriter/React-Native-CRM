@@ -27,7 +27,7 @@ const Edit = () => {
 
   useEffect(() => {
     dispatch(actions.updateFields(params));
-  }, []);
+  }, [dispatch]);
 
   const estadoActual = useSelector((state) => {
     return state;

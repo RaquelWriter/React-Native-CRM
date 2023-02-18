@@ -2,14 +2,13 @@ import { useRoute } from '@react-navigation/native';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { View, Text, TextInput, TouchableHighlight } from 'react-native';
-import { useUpdateFields } from '../features/Customers/hooks';
+import { useEditCustomer, useUpdateFields } from '../features/Customers/hooks';
 import stylesFn from './styles';
 
 const Form = ({ disabled = false }) => {
   const styles = stylesFn();
   const { params } = useRoute();
   const { fields, setFormField } = useUpdateFields(params);
-
   //const { firstName, lastName, region } = fields;
   // const {
   //     common_name,
@@ -24,6 +23,7 @@ const Form = ({ disabled = false }) => {
     (state) => state.customers.form.fields
   );
 
+  const { onSubmit } = useEditCustomer({ id });
   return (
     <View style={styles.container}>
       <Text style={styles.h2}>Customer ID: {id}</Text>
@@ -48,7 +48,7 @@ const Form = ({ disabled = false }) => {
         style={styles.form}
         onChangeText={(v) => setFormField('region', v)}
       />
-      <TouchableHighlight>
+      <TouchableHighlight onPress={onSubmit}>
         <Text>Submit</Text>
       </TouchableHighlight>
 
