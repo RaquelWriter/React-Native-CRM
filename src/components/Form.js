@@ -8,7 +8,8 @@ import stylesFn from './styles';
 const Form = ({ disabled = false }) => {
   const styles = stylesFn();
   const { params } = useRoute();
-  const { fields, setFormField } = useUpdateFields(params);
+  const { id } = params;
+  const { fields, setFormField } = useUpdateFields();
   //const { firstName, lastName, region } = fields;
   // const {
   //     common_name,
@@ -18,11 +19,18 @@ const Form = ({ disabled = false }) => {
   //     population,
   //     invasive
   // } = fields
-
-  const { id, firstName, lastName, region } = useSelector(
+  const { firstName, lastName, region } = useSelector(
     (state) => state.customers.form.fields
   );
-
+  const storeNow = useSelector((state) => state);
+  console.log(
+    'customerID to edit: ',
+    id,
+    'PARAMS: ',
+    params,
+    'Store: ',
+    storeNow
+  );
   const { onSubmit } = useEditCustomer({ id });
   return (
     <View style={styles.container}>

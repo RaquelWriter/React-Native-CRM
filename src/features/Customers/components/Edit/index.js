@@ -24,15 +24,16 @@ const Edit = () => {
   const dispatch = useDispatch();
   const styles = stylesFn();
   const { params } = useRoute();
-
+  const { id } = params;
   useEffect(() => {
-    dispatch(actions.updateFields(params));
+    dispatch(actions.updateFields(customer));
   }, [dispatch]);
 
-  const estadoActual = useSelector((state) => {
-    return state;
+  const customer = useSelector((state) => {
+    return state.customers.customers.find((c) => c.id === id);
   });
-  console.log('ESTADO ACTUAL: ', estadoActual, 'PARAMS: ', params);
+  console.log('CUSTOMER TO EDIT :', customer);
+
   return (
     <View style={styles.container}>
       <Form />

@@ -9,7 +9,9 @@ export function* watchLoadCustomers() {
 
 export function* takeLoadCustomers() {
   try {
+    // Takes the data from the device
     let customers = yield get('CUSTOMERS_KEY');
+    // if not takes the data from the DB.
     if (!customers) {
       customers = yield call(fetchCustomersData);
       yield set('CUSTOMERS_KEY', customers);

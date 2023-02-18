@@ -11,9 +11,9 @@ const Row = ({ item }) => {
       onPress={() =>
         navigate('Edit customer', {
           id: item.id,
-          firstName: item.firstName,
+          /* firstName: item.firstName,
           lastName: item.lastName,
-          region: item.region,
+          region: item.region, */
         })
       }
     >
