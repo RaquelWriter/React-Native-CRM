@@ -11,9 +11,10 @@ const Welcome = () => {
   const styles = stylesFn();
   return (
     <View style={styles.container}>
-      <Text>Welcome page</Text>
+      <Text style={styles.h1}>WELCOME TO THE CRM</Text>
+      <Text style={styles.h1}>You are doing great!</Text>
       <TouchableOpacity style={styles.buttons} onPress={clearStorage}>
-        <Text>Clear Storage</Text>
+        <Text style={styles.textButton}>Clear Storage</Text>
       </TouchableOpacity>
     </View>
   );

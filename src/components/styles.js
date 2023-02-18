@@ -14,6 +14,12 @@ const stylesFn = () =>
       borderRadius: 25,
       color: '#f0f',
     },
+    h1: {
+      alignItems: 'center',
+      fontSize: 20,
+      margin: 10,
+      alignSelf: 'center',
+    },
     h2: {
       fontSize: 15,
       marginBottom: 1,
