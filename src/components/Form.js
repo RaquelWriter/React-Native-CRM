@@ -1,6 +1,7 @@
-import { useRoute } from '@react-navigation/native';
-import { useState } from 'react';
+import { useRoute, useNavigation } from '@react-navigation/native';
+import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { updateFields } from '../features/Customers/reducers';
 import {
   View,
   Text,
@@ -14,8 +15,16 @@ import stylesFn from './styles';
 
 const Form = ({ disabled = false }) => {
   const styles = stylesFn();
+  const dispatch = useDispatch();
+  const { navigate } = useNavigation();
   const { params } = useRoute();
-  const { id } = params;
+  let id;
+  if (!params.id) {
+    id = crypto.randomUUID();
+  } else {
+    id = params.id;
+  }
+
   const { fields, setFormField } = useUpdateFields();
   const { firstName, lastName, region, active } = useSelector(
     (state) => state.customers.form.fields
@@ -23,10 +32,15 @@ const Form = ({ disabled = false }) => {
 
   const [isActive, setIsActive] = useState(active);
   const toggleSwitch = () => setIsActive((previousState) => !previousState);
-  const handleSwitch = () => {
-    toggleSwitch();
+  const handleSwitch = async () => {
+    await toggleSwitch();
     setFormField('active', !isActive);
   };
+
+  useEffect(() => {
+    setIsActive(active);
+  }, [active]);
+
   const { regions } = useSelector((state) => state.regions);
   console.log('REGIONS OPTIONS: ', regions);
   const storeNow = useSelector((state) => state);
@@ -39,6 +53,13 @@ const Form = ({ disabled = false }) => {
     storeNow
   );
   const { onSubmit } = useEditCustomer({ id });
+
+  // Submit and Clear the form and navigate to another page
+  const handleSubmit = async () => {
+    onSubmit();
+    dispatch(updateFields({}));
+    navigate('Regions');
+  };
   return (
     <View style={styles.container}>
       <Text style={styles.h2}>Customer ID: {id}</Text>
@@ -84,7 +105,7 @@ const Form = ({ disabled = false }) => {
       /> */}
       <TouchableOpacity
         style={Object.assign({}, styles.buttons, styles.buttonCreate)}
-        onPress={onSubmit}
+        onPress={handleSubmit}
       >
         <Text style={styles.textButton}>Submit</Text>
       </TouchableOpacity>
