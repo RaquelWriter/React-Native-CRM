@@ -15,6 +15,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import stylesFn from '../../../../components/styles';
+import ButtonAddCustomer from '../../../../components/ButtonAddCustomer';
 
 const cosa = [
   {
@@ -60,7 +61,9 @@ const ListByRegion = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.h2}>{region} customers</Text>
-      <Text style={styles.h2}>Touch customer to edit</Text>
+      {filteredCustomers.length > 0 ? (
+        <Text style={styles.h2}>Touch box to edit</Text>
+      ) : null}
       {filteredCustomers.length > 0 ? (
         <FlatList
           data={filteredCustomers}
@@ -70,17 +73,9 @@ const ListByRegion = () => {
       ) : (
         <>
           <Text>No Customers</Text>
-          <Button
-            title={'Add Customer'}
-            onPress={() => {
-              navigate('Add Customer');
-            }}
-          />
         </>
       )}
-      <TouchableOpacity>
-        <Text>Create new customer</Text>
-      </TouchableOpacity>
+      <ButtonAddCustomer />
     </View>
   );
 };

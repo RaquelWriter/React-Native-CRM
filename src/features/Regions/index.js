@@ -10,6 +10,7 @@ import {
   TextInput,
   TouchableOpacity,
 } from 'react-native';
+import ButtonAddCustomer from '../../components/ButtonAddCustomer';
 import stylesFn from '../../components/styles';
 
 // Allows users to select their region and navigate to the Customer screen.
@@ -41,12 +42,7 @@ const Regions = () => {
           </Text>
         </TouchableOpacity>
       ))}
-      <TouchableOpacity
-        style={Object.assign({}, styles.buttons, styles.buttonCreate)}
-        onPress={onSubmit}
-      >
-        <Text style={styles.textButton}>Create new user</Text>
-      </TouchableOpacity>
+      <ButtonAddCustomer />
     </View>
   );
 };
