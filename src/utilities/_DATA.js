@@ -4,14 +4,14 @@ export let customers = [
     id: 'e838e5b1-20dc-4d3d-b211-f1c8372a1276',
     firstName: 'Adam',
     lastName: 'Sandler',
-    active: 'true',
+    active: true,
     region: 'South West',
   },
   {
     id: '02a4e700-4ff1-4c08-aeeb-23e5d3863e34',
     firstName: 'John',
     lastName: 'Cusack',
-    active: 'false',
+    active: false,
     region: 'North West',
   },
 ];

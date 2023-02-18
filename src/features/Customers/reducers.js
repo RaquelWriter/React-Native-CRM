@@ -13,7 +13,7 @@ const initialState = {
       id: '',
       firstName: '',
       lastName: '',
-      active: '',
+      active: false,
       region: '',
     },
   },

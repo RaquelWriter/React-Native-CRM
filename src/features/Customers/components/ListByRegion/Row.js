@@ -3,7 +3,7 @@ import { View, Text, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 const Row = ({ item }) => {
-  console.log('DENTRO DE ROW: ', item);
+  console.log('DENTRO DE ROW: ', item, 'item.active: ', item.active);
   const { navigate } = useNavigation();
 
   return (
@@ -22,7 +22,7 @@ const Row = ({ item }) => {
         <Text key={'re'}>Region: {item.region}</Text>
         <Text key={'fn'}>First Name: {item.firstName}</Text>
         <Text key={'ln'}>Last Name: {item.lastName}</Text>
-        <Text key={'ac'}>Active: {item.active}</Text>
+        <Text key={'ac'}>Active: {item.active ? 'YES' : 'NO'}</Text>
       </View>
     </TouchableOpacity>
   );
