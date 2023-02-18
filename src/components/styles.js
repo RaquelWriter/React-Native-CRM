@@ -49,6 +49,13 @@ const stylesFn = () =>
       borderRadius: 10,
       padding: 5,
     },
+    formPicker: {
+      height: 30,
+      width: '100%',
+      backgroundColor: '#ffc144',
+      borderColor: 'black',
+      borderWidth: 2,
+    },
   });
 
 export default stylesFn;

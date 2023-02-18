@@ -1,7 +1,14 @@
 import { useRoute } from '@react-navigation/native';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { View, Text, TextInput, TouchableHighlight } from 'react-native';
+import {
+  View,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  Picker,
+  Switch,
+} from 'react-native';
 import { useEditCustomer, useUpdateFields } from '../features/Customers/hooks';
 import stylesFn from './styles';
 
@@ -10,18 +17,18 @@ const Form = ({ disabled = false }) => {
   const { params } = useRoute();
   const { id } = params;
   const { fields, setFormField } = useUpdateFields();
-  //const { firstName, lastName, region } = fields;
-  // const {
-  //     common_name,
-  //     scientific_name,
-  //     description,
-  //     endangered_status,
-  //     population,
-  //     invasive
-  // } = fields
-  const { firstName, lastName, region } = useSelector(
+  const { firstName, lastName, region, active } = useSelector(
     (state) => state.customers.form.fields
   );
+
+  const [isActive, setIsActive] = useState(active);
+  const toggleSwitch = () => setIsActive((previousState) => !previousState);
+  const handleSwitch = () => {
+    toggleSwitch();
+    setFormField('active', !isActive);
+  };
+  const { regions } = useSelector((state) => state.regions);
+  console.log('REGIONS OPTIONS: ', regions);
   const storeNow = useSelector((state) => state);
   console.log(
     'customerID to edit: ',
@@ -49,16 +56,38 @@ const Form = ({ disabled = false }) => {
         style={styles.form}
         onChangeText={(v) => setFormField('lastName', v)}
       />
-      <TextInput
+      <Picker
+        style={Object.assign({}, styles.form, styles.formPicker)}
+        selectedValue={region}
+        onValueChange={(v) => setFormField('region', v)}
+      >
+        {regions.map((region) => (
+          <Picker.Item key={region} label={region} value={region} />
+        ))}
+      </Picker>
+      <View>
+        <Text>Active: </Text>
+      </View>
+      <Switch
+        trackColor={{ false: '#767577', true: '#ebf6ff' }}
+        thumbColor={isActive ? '#767577' : '#f4f3f4'}
+        ios_backgroundColor='#3e3e3e'
+        onValueChange={handleSwitch}
+        value={isActive}
+      ></Switch>
+      {/* <TextInput
         key={'region'}
         placeholder={region}
         value={region || ''}
         style={styles.form}
         onChangeText={(v) => setFormField('region', v)}
-      />
-      <TouchableHighlight onPress={onSubmit}>
-        <Text>Submit</Text>
-      </TouchableHighlight>
+      /> */}
+      <TouchableOpacity
+        style={Object.assign({}, styles.buttons, styles.buttonCreate)}
+        onPress={onSubmit}
+      >
+        <Text style={styles.textButton}>Submit</Text>
+      </TouchableOpacity>
 
       {/* <TextInput
         key={'common_name'}
