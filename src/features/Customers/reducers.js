@@ -81,6 +81,9 @@ const customersSlice = createSlice({
       console.log('DENTRO DEL REDUCER updateFields, payload: ', payload);
       state.form.fields = payload;
     },
+    resetForm: (state) => {
+      state.form.fields = initialState.form.fields;
+    },
   },
 });
 
@@ -97,6 +100,7 @@ export const {
   editCustomerReset,
   setFormField,
   updateFields,
+  resetForm,
 } = customersSlice.actions;
 
 export default customersSlice.reducer;

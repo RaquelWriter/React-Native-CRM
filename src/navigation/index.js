@@ -30,6 +30,7 @@ export const Navigation = () => {
   return (
     <NavigationContainer>
       <Tab.Navigator
+        initialRouteName='Welcome'
         screenOptions={({ route }) => ({
           headerShown: false,
           tabBarIcon: ({ focused, size, color }) => {

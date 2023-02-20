@@ -34,8 +34,3 @@ export const useEditCustomer = (customerID) => {
     },
   };
 };
-// TODO
-export const useResetForm = () => {};
-/* export const useListAnimals = () => {
-  return useSelector((state) => state.animal.list.animals);
-}; */

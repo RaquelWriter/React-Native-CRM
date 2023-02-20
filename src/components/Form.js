@@ -1,6 +1,7 @@
 import { useRoute, useNavigation } from '@react-navigation/native';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { v4 as uuidv4 } from 'uuid';
 import { updateFields } from '../features/Customers/reducers';
 import {
   View,
@@ -18,12 +19,7 @@ const Form = ({ disabled = false }) => {
   const dispatch = useDispatch();
   const { navigate } = useNavigation();
   const { params } = useRoute();
-  let id;
-  if (!params.id) {
-    id = crypto.randomUUID();
-  } else {
-    id = params.id;
-  }
+  let id = params?.id || uuidv4();
 
   const { fields, setFormField } = useUpdateFields();
   const { firstName, lastName, region, active } = useSelector(

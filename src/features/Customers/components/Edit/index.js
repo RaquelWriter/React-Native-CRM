@@ -10,7 +10,6 @@ import {
   TextInput,
   TouchableOpacity,
 } from 'react-native';
-import { useResetForm } from '../../hooks';
 import Form from '../../../../components/Form';
 import stylesFn from './styles';
 
@@ -20,7 +19,6 @@ import stylesFn from './styles';
 // params: {id, firstName, lastName, region}
 
 const Edit = () => {
-  useResetForm();
   const dispatch = useDispatch();
   const styles = stylesFn();
   const { params } = useRoute();

@@ -1,14 +1,14 @@
 // South West, North West, South East, North East, Mid West
 export let customers = [
   {
-    id: 'e838e5b1-20dc-4d3d-b211-f1c8372a1276',
+    id: 'g6oz6jb22y9o51bxwglrzm',
     firstName: 'Adam',
     lastName: 'Sandler',
     active: true,
     region: 'South West',
   },
   {
-    id: '02a4e700-4ff1-4c08-aeeb-23e5d3863e34',
+    id: '3ma6n82xkkxy5d1wlprjw',
     firstName: 'John',
     lastName: 'Cusack',
     active: false,
