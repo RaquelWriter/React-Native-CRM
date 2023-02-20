@@ -1,33 +1,31 @@
-/* import { all, put, select, takeLatest, delay } from 'redux-saga/effects';
+import { all, put, select, takeLatest, delay } from 'redux-saga/effects';
 import * as actions from '../reducers';
-import {set} from '../../../utils/async_storage';
+import { set } from '../../../utilities/async_storage';
 
-export function* watchCreateAnimal() {
-  yield takeLatest(actions.createAnimal.toString(), takeCreateAnimal);
+export function* watchcreateCustomer() {
+  yield takeLatest(actions.createCustomer.toString(), takeCreateCustomer);
 }
 
-export function* takeCreateAnimal() {
+export function* takeCreateCustomer() {
   console.log('Starting fetch request to API');
   try {
-    const fields = yield select((state) => state.animal.form.fields);
-    const animals = yield select((state) => state.animal.list.animals);
+    const fields = yield select((state) => state.customer.form.fields);
+    const customers = yield select((state) => state.customers.customers);
 
-    const animal = {
-      id: animals.length + 1,
+    const customer = {
       ...fields,
     };
 
     // pretend call to API
     yield delay(500);
 
-    const result = [animal, ...animals];
+    const result = [...customers, customer];
 
     // Saving to th async_storage also:
-    yield set('ANIMALS_KEY', result);
+    yield set('CUSTOMERS_KEY', result);
 
-    yield put(actions.createAnimalResult(result));
+    yield put(actions.createCustomerResult(result));
   } catch (error) {
-    yield put(actions.createAnimalError(error.toString()));
+    yield put(actions.createCustomerError(error.toString()));
   }
 }
- */

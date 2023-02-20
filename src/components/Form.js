@@ -11,7 +11,11 @@ import {
   Picker,
   Switch,
 } from 'react-native';
-import { useEditCustomer, useUpdateFields } from '../features/Customers/hooks';
+import {
+  useEditCustomer,
+  useUpdateFields,
+  useNewCustomer,
+} from '../features/Customers/hooks';
 import stylesFn from './styles';
 
 const Form = ({ disabled = false }) => {
@@ -19,7 +23,9 @@ const Form = ({ disabled = false }) => {
   const dispatch = useDispatch();
   const { navigate } = useNavigation();
   const { params } = useRoute();
-  let id = params?.id || uuidv4();
+  const isNewBoolean = !params?.id;
+  console.log(isNewBoolean);
+  const id = params?.id || uuidv4();
 
   const { fields, setFormField } = useUpdateFields();
   const { firstName, lastName, region, active } = useSelector(
@@ -33,11 +39,19 @@ const Form = ({ disabled = false }) => {
     setFormField('active', !isActive);
   };
 
+  // Set the customer active from the state
   useEffect(() => {
     setIsActive(active);
   }, [active]);
 
-  const { regions } = useSelector((state) => state.regions);
+  const handleLoadRegionsForNewCustomer = () => {
+    dispatch(actions.loadRegions());
+    const regions = useSelector((state) => state.regions.regions);
+    return regions;
+  };
+
+  const { regions } =
+    useSelector((state) => state.regions) || handleLoadRegionsForNewCustomer();
   console.log('REGIONS OPTIONS: ', regions);
   const storeNow = useSelector((state) => state);
   console.log(
@@ -48,7 +62,9 @@ const Form = ({ disabled = false }) => {
     'Store: ',
     storeNow
   );
-  const { onSubmit } = useEditCustomer({ id });
+  const { onSubmit } = isNewBoolean
+    ? useNewCustomer({ id })
+    : useEditCustomer({ id });
 
   // Submit and Clear the form and navigate to another page
   const handleSubmit = async () => {

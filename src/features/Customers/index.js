@@ -12,12 +12,8 @@ import {
 } from 'react-native';
 import stylesFn from '../../components/styles';
 
-const customers = () => {
+const Customers = () => {
   const { navigate } = useNavigation();
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(actions.loadCustomers());
-  }, [dispatch]);
 
   const customers = useSelector((state) => state.customers);
   const onSubmit = () => {
@@ -37,4 +33,4 @@ const customers = () => {
   );
 };
 
-export default Regions;
+export default Customers;

@@ -1,15 +1,7 @@
 import React from 'react';
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import * as actions from './reducers';
+import { useSelector } from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
-import {
-  StyleSheet,
-  View,
-  Text,
-  TextInput,
-  TouchableOpacity,
-} from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 import ButtonAddCustomer from '../../components/ButtonAddCustomer';
 import stylesFn from '../../components/styles';
 
@@ -18,15 +10,9 @@ import stylesFn from '../../components/styles';
 // create view.
 const Regions = () => {
   const { navigate } = useNavigation();
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(actions.loadRegions());
-  }, [dispatch]);
 
   const regions = useSelector((state) => state.regions.regions);
-  const onSubmit = () => {
-    // TODO
-  };
+
   const styles = stylesFn();
   return (
     <View style={styles.container}>
