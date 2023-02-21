@@ -1,7 +1,6 @@
 import { all, put, select, takeLatest, delay } from 'redux-saga/effects';
 import * as actions from '../reducers';
 import { set } from '../../../utilities/async_storage';
-// TODO: Is ^ the import * syntax still the best thing to do?
 
 export function* watchEditCustomer() {
   yield takeLatest(actions.editCustomer.toString(), takeEditCustomer);
@@ -29,6 +28,7 @@ export function* takeEditCustomer(action) {
       // return the new fields from the form instead of the old ones
       return fields;
     });
+    // Saving to the device memory with async storage
     yield set('CUSTOMERS_KEY', result);
 
     // pretend call to API
