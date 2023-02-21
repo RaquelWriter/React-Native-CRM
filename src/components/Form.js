@@ -3,14 +3,8 @@ import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 import { updateFields } from '../features/Customers/reducers';
-import {
-  View,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  Picker,
-  Switch,
-} from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, Switch } from 'react-native';
+import { Picker } from '@react-native-picker/picker';
 import {
   useEditCustomer,
   useUpdateFields,
