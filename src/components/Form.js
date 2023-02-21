@@ -64,7 +64,6 @@ const Form = ({ disabled = false }) => {
   };
   return (
     <View style={styles.container}>
-      <Text style={styles.h2}>Customer ID: {id}</Text>
       <TextInput
         key={'firstName'}
         label={firstName}

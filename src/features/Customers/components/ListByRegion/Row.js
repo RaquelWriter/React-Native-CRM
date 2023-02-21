@@ -1,8 +1,10 @@
 import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import stylesFn from '../../../../components/styles';
 
 const Row = ({ item }) => {
+  const styles = stylesFn();
   console.log('DENTRO DE ROW: ', item, 'item.active: ', item.active);
   const { navigate } = useNavigation();
 
@@ -17,7 +19,7 @@ const Row = ({ item }) => {
         })
       }
     >
-      <View key={item.id} style={{ borderWidth: 1, padding: 10, margin: 10 }}>
+      <View key={item.id} style={styles.row}>
         <Text key={'id'}>ID: {item.id}</Text>
         <Text key={'re'}>Region: {item.region}</Text>
         <Text key={'fn'}>First Name: {item.firstName}</Text>

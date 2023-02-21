@@ -60,7 +60,7 @@ const ListByRegion = () => {
   const styles = stylesFn();
   return (
     <View style={styles.container}>
-      <Text style={styles.h2}>{region} customers</Text>
+      <Text style={styles.h1}>{region} customers</Text>
       {filteredCustomers.length > 0 ? (
         <Text style={styles.h2}>Touch box to edit</Text>
       ) : null}
@@ -72,7 +72,7 @@ const ListByRegion = () => {
         />
       ) : (
         <>
-          <Text>No Customers</Text>
+          <Text style={styles.h1}>No Customers</Text>
         </>
       )}
       <ButtonAddCustomer />

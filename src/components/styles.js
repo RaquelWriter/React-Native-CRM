@@ -57,8 +57,16 @@ const stylesFn = () =>
       fontSize: 25,
     },
     formPicker: {
+      height: 200,
       width: 200,
       marginTop: 5,
+    },
+    row: {
+      borderWidth: 2,
+      borderRadius: 20,
+      padding: 10,
+      margin: 10,
+      backgroundColor: '#def5ff',
     },
   });
 

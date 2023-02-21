@@ -24,7 +24,7 @@ const New = () => {
   );
   return (
     <View style={styles.container}>
-      <Text>Add new customer</Text>
+      <Text style={styles.h1}>Add new customer</Text>
       <Form />
     </View>
   );
