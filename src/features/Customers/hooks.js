@@ -13,13 +13,13 @@ export const useUpdateFields = () => {
   };
 };
 
-export const useNewCustomer = () => {
+export const useNewCustomer = (customerID) => {
   const dispatch = useDispatch();
 
   return {
     onSubmit: () => {
-      console.log('Dispatching CREATE_NEW action');
-      dispatch(actions.createCustomer());
+      console.log('Dispatching NEW_CUSTOMER action');
+      dispatch(actions.createCustomer(customerID));
     },
   };
 };
