@@ -14,7 +14,7 @@ const initialState = {
       firstName: '',
       lastName: '',
       active: false,
-      region: '',
+      region: 'South West',
     },
   },
   create: {
@@ -39,7 +39,7 @@ const customersSlice = createSlice({
       state.customers = action.payload;
       state.loading = false;
     },
-    createCustomer: (state) => {
+    createCustomer: (state, { payload }) => {
       state.create.status = REQUESTING;
     },
     createCustomerResult: (state, { payload }) => {
@@ -56,8 +56,8 @@ const customersSlice = createSlice({
       state.edit.status = REQUESTING;
     },
     editCustomerResult: (state, { payload }) => {
-      state.edit.status = SUCCESS;
       state.customers = payload;
+      state.edit.status = SUCCESS;
     },
     editCustomerError: (state, { payload }) => {
       state.edit.status = ERROR;
@@ -104,59 +104,3 @@ export const {
 } = customersSlice.actions;
 
 export default customersSlice.reducer;
-
-/* 
-import { useSelector } from 'react-redux';
-
-function MyComponent() {
-  // Access the form state using the useSelector hook
-  const { id, firstName, lastName, active, region } = useSelector(
-    (state) => state.customers.form.fields
-  );
-
-  // Render the component using the form state
-  return (
-    <form>
-      <input
-        type='text'
-        value={id}
-        onChange={(e) =>
-          dispatch(setFormField({ field: 'id', value: e.target.value }))
-        }
-      />
-      <input
-        type='text'
-        value={firstName}
-        onChange={(e) =>
-          dispatch(setFormField({ field: 'firstName', value: e.target.value }))
-        }
-      />
-      <input
-        type='text'
-        value={lastName}
-        onChange={(e) =>
-          dispatch(setFormField({ field: 'lastName', value: e.target.value }))
-        }
-      />
-      <input
-        type='checkbox'
-        checked={active}
-        onChange={(e) =>
-          dispatch(setFormField({ field: 'active', value: e.target.checked }))
-        }
-      />
-      <select
-        value={region}
-        onChange={(e) =>
-          dispatch(setFormField({ field: 'region', value: e.target.value }))
-        }
-      >
-        <option value='north'>North</option>
-        <option value='south'>South</option>
-        <option value='east'>East</option>
-        <option value='west'>West</option>
-      </select>
-    </form>
-  );
-}
- */
