@@ -23,8 +23,8 @@ const Form = ({ disabled = false }) => {
   const dispatch = useDispatch();
   const { navigate } = useNavigation();
   const { params } = useRoute();
-  const isNewBoolean = !params?.id;
-  console.log(isNewBoolean);
+  const isNewCustomer = !params?.id;
+  console.log(isNewCustomer);
   const id = params?.id || uuidv4();
 
   const { fields, setFormField } = useUpdateFields();
@@ -44,14 +44,7 @@ const Form = ({ disabled = false }) => {
     setIsActive(active);
   }, [active]);
 
-  const handleLoadRegionsForNewCustomer = () => {
-    dispatch(actions.loadRegions());
-    const regions = useSelector((state) => state.regions.regions);
-    return regions;
-  };
-
-  const { regions } =
-    useSelector((state) => state.regions) || handleLoadRegionsForNewCustomer();
+  const { regions } = useSelector((state) => state.regions);
   console.log('REGIONS OPTIONS: ', regions);
   const storeNow = useSelector((state) => state);
   console.log(
@@ -60,14 +53,17 @@ const Form = ({ disabled = false }) => {
     'PARAMS: ',
     params,
     'Store: ',
-    storeNow
+    storeNow,
+    'Form.fields.id: ',
+    storeNow.customers.form.fields.id
   );
-  const { onSubmit } = isNewBoolean
+  const { onSubmit } = isNewCustomer
     ? useNewCustomer({ id })
     : useEditCustomer({ id });
 
   // Submit and Clear the form and navigate to another page
   const handleSubmit = async () => {
+    isNewCustomer && setFormField('id', id);
     onSubmit();
     dispatch(updateFields({}));
     navigate('Regions');
@@ -77,14 +73,14 @@ const Form = ({ disabled = false }) => {
       <Text style={styles.h2}>Customer ID: {id}</Text>
       <TextInput
         key={'firstName'}
-        placeholder={firstName}
+        label={firstName}
         value={firstName || ''}
         style={styles.form}
         onChangeText={(v) => setFormField('firstName', v)}
       />
       <TextInput
         key={'lastName'}
-        placeholder={lastName}
+        label={lastName}
         value={lastName || ''}
         style={styles.form}
         onChangeText={(v) => setFormField('lastName', v)}
