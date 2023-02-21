@@ -79,15 +79,16 @@ const Form = ({ disabled = false }) => {
         style={styles.form}
         onChangeText={(v) => setFormField('lastName', v)}
       />
-      <Picker
-        style={Object.assign({}, styles.form, styles.formPicker)}
-        selectedValue={region}
-        onValueChange={(v) => setFormField('region', v)}
-      >
-        {regions.map((region) => (
-          <Picker.Item key={region} label={region} value={region} />
-        ))}
-      </Picker>
+      <View style={styles.formPicker}>
+        <Picker
+          selectedValue={region}
+          onValueChange={(v) => setFormField('region', v)}
+        >
+          {regions.map((region) => (
+            <Picker.Item key={region} label={region} value={region} />
+          ))}
+        </Picker>
+      </View>
       <View>
         <Text>Active: </Text>
       </View>

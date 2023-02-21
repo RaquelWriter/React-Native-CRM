@@ -46,21 +46,19 @@ const stylesFn = () =>
       backgroundColor: '#0070a1',
     },
     form: {
-      height: 25,
-      width: '100%',
+      height: 40,
+      width: 250,
       margin: 10,
       borderWidth: 1,
       backgroundColor: 'white',
       borderColor: 'black',
       borderRadius: 10,
       padding: 5,
+      fontSize: 25,
     },
     formPicker: {
-      height: 30,
-      width: '100%',
-      backgroundColor: '#ffc144',
-      borderColor: 'black',
-      borderWidth: 2,
+      width: 200,
+      marginTop: 5,
     },
   });
 
