@@ -5,7 +5,6 @@ import { View, Text, TouchableOpacity } from 'react-native';
 import { clear } from '../../utilities/async_storage';
 import { loadCustomers } from '../Customers/reducers';
 import { loadRegions } from '../Regions/reducers';
-//import { useUpdateFields, useNewAnimal } from '../hooks';
 import stylesFn from '../../components/styles';
 
 const Welcome = () => {
