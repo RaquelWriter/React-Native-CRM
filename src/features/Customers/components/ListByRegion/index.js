@@ -1,44 +1,18 @@
 import React from 'react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigation, useRoute } from '@react-navigation/native';
+import { useRoute } from '@react-navigation/native';
 import Row from './Row';
 import * as actions from '../../reducers';
-import {
-  StyleSheet,
-  View,
-  Text,
-  TextInput,
-  FlatList,
-  Item,
-  Button,
-  TouchableOpacity,
-} from 'react-native';
+import { View, Text, FlatList } from 'react-native';
 import stylesFn from '../../../../components/styles';
 import ButtonAddCustomer from '../../../../components/ButtonAddCustomer';
 
-const cosa = [
-  {
-    id: '5c9qojr2d1738zlx09afby',
-    firstName: 'Adam',
-    lastName: 'Sandler',
-    active: 'true',
-    region: 'South West',
-  },
-  {
-    id: 'f4xzgapq7mu783k9t02ghx',
-    firstName: 'John',
-    lastName: 'Cusack',
-    active: 'false',
-    region: 'North West',
-  },
-];
 const ListByRegion = () => {
   const { params } = useRoute();
   const { region } = params;
   if (!region) return null;
   console.log('REGION: ', region);
-  const navigate = useNavigation();
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(actions.loadCustomers());
