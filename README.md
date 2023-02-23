@@ -1,4 +1,4 @@
-# React Native Expo CLIENT RELAIONSHIP MANAGEMENT (CRM) - FrontEnd
+# React Native Expo - Client Relationship Management (CRM) - FrontEnd
 
 React Native CRM with [Expo framework](https://expo.dev/).
 
