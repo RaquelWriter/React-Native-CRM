@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { AsyncStorage } from 'react-native';
+import { set, get, remove } from '../../utilities/async_storage';
 import { Keyboard, View, Text, TouchableOpacity } from 'react-native';
 import stylesFn from '../../components/styles';
 import Constants from 'expo-constants';
@@ -29,7 +29,7 @@ const Reminders = () => {
 
   useEffect(() => {
     const getNotificationText = async () => {
-      const text = await AsyncStorage.getItem('notificationText');
+      const text = await get('notifi<cationText');
       if (text) {
         setNotificationText(text);
       }
@@ -55,7 +55,7 @@ const Reminders = () => {
     };
     // Notifications only show when the app is not active
     Notifications.scheduleNotificationAsync(schedulingOptions);
-    AsyncStorage.setItem(
+    set(
       'notificationText',
       `Your reminder is set to ${hour}:${minute} time, everyday`
     );
@@ -63,7 +63,7 @@ const Reminders = () => {
 
   const cancelNotifications = () => {
     Notifications.cancelAllScheduledNotificationsAsync();
-    AsyncStorage.removeItem('notificationText');
+    remove('notificationText');
     setNotificationText(
       'All notifications cancelled. Choose a time for the reminder'
     );
