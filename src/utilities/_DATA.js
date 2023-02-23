@@ -1,5 +1,7 @@
 // South West, North West, South East, North East, Mid West
-export let customers = [
+export let customers = [];
+
+/* export let customers = [
   {
     id: 'f8c1b5fb-cc3e-4cb8-b562-aa0b8cdcec7b',
     firstName: 'Adam',
@@ -14,7 +16,7 @@ export let customers = [
     active: false,
     region: 'North West',
   },
-];
+]; */
 
 export let regions = [
   'South West',
