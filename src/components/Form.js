@@ -12,7 +12,7 @@ import {
 } from '../features/Customers/hooks';
 import stylesFn from './styles';
 
-const Form = ({ disabled = false }) => {
+const Form = () => {
   const styles = stylesFn();
   const dispatch = useDispatch();
   const { navigate } = useNavigation();
@@ -24,6 +24,7 @@ const Form = ({ disabled = false }) => {
   const { firstName, lastName, region, active } = useSelector(
     (state) => state.customers.form.fields
   );
+  const [disable, setDisable] = useState(true);
 
   const [isActive, setIsActive] = useState(active);
   const toggleSwitch = () => setIsActive((previousState) => !previousState);
@@ -36,6 +37,10 @@ const Form = ({ disabled = false }) => {
   useEffect(() => {
     setIsActive(active);
   }, [active]);
+
+  useEffect(() => {
+    firstName && lastName ? setDisable(false) : setDisable(true);
+  }, [firstName, lastName]);
 
   const { regions } = useSelector((state) => state.regions);
   const { onSubmit } = isNewCustomer
@@ -86,10 +91,17 @@ const Form = ({ disabled = false }) => {
         value={isActive}
       ></Switch>
       <TouchableOpacity
-        style={Object.assign({}, styles.buttons, styles.buttonCreate)}
+        disabled={disable}
+        style={Object.assign(
+          {},
+          styles.buttons,
+          disable ? styles.buttonDisable : styles.buttonCreate
+        )}
         onPress={handleSubmit}
       >
-        <Text style={styles.textButton}>Submit</Text>
+        <Text style={disable ? styles.textButtonDisable : styles.textButton}>
+          Submit
+        </Text>
       </TouchableOpacity>
     </View>
   );

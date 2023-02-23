@@ -31,6 +31,12 @@ const stylesFn = () =>
       flex: 1,
       alignItems: 'center',
     },
+    textButtonDisable: {
+      color: 'black',
+      fontWeight: '800',
+      flex: 1,
+      alignItems: 'center',
+    },
     buttons: {
       backgroundColor: '#00a081',
       borderRadius: 20,
@@ -44,6 +50,12 @@ const stylesFn = () =>
     },
     buttonCreate: {
       backgroundColor: '#0070a1',
+    },
+    buttonDisable: {
+      backgroundColor: '#f2f2f2',
+    },
+    textBlack: {
+      color: 'black',
     },
     form: {
       height: 40,
