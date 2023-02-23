@@ -69,3 +69,4 @@ customers: [
 ## Todos
 
 - Push notification: choose a different client for every day.
+- List customers by status (active/inactive).
