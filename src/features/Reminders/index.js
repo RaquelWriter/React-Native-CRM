@@ -93,10 +93,9 @@ const Reminders = () => {
     const diffInMs = myDate - dateSchedule; // diff in Miliseconds
     const diffInHours = Math.floor(diffInMs / (1000 * 60 * 60)); // to hours
     const diffInMinutes = Math.floor((diffInMs / (1000 * 60)) % 60); // to minutes
-    const hour = parseInt(dateSchedule.getHours().toString().padStart(2, '0'));
-    const minute = parseInt(
-      dateSchedule.getMinutes().toString().padStart(2, '0')
-    );
+    const hour = dateSchedule.getHours();
+    const minute = dateSchedule.getMinutes();
+
     console.warn(
       'Time picked: ',
       time,
@@ -107,8 +106,11 @@ const Reminders = () => {
     );
     onSubmit(hour, minute);
     setNotificationText(
-      `Your reminder is set to ${hour}:${minute} time, everyday`
+      `Your reminder is set to ${String(hour).padStart(2, '0')}:${String(
+        minute
+      ).padStart(2, '0')} time, everyday`
     );
+
     hideTimePicker();
   };
   return (
