@@ -3,13 +3,7 @@ import { useRoute } from '@react-navigation/native';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import * as actions from '../../reducers';
-import {
-  StyleSheet,
-  View,
-  Text,
-  TextInput,
-  TouchableOpacity,
-} from 'react-native';
+import { View } from 'react-native';
 import Form from '../../../../components/Form';
 import stylesFn from './styles';
 
@@ -30,7 +24,6 @@ const Edit = () => {
   const customer = useSelector((state) => {
     return state.customers.customers.find((c) => c.id === id);
   });
-  console.log('CUSTOMER TO EDIT :', customer);
 
   return (
     <View style={styles.container}>

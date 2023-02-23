@@ -18,7 +18,6 @@ const Form = ({ disabled = false }) => {
   const { navigate } = useNavigation();
   const { params } = useRoute();
   const isNewCustomer = !params?.id;
-  console.log(isNewCustomer);
   const id = params?.id || uuidv4();
 
   const { fields, setFormField } = useUpdateFields();
@@ -39,18 +38,6 @@ const Form = ({ disabled = false }) => {
   }, [active]);
 
   const { regions } = useSelector((state) => state.regions);
-  console.log('REGIONS OPTIONS: ', regions);
-  const storeNow = useSelector((state) => state);
-  console.log(
-    'customerID to edit: ',
-    id,
-    'PARAMS: ',
-    params,
-    'Store: ',
-    storeNow,
-    'Form.fields.id: ',
-    storeNow.customers.form.fields.id
-  );
   const { onSubmit } = isNewCustomer
     ? useNewCustomer({ id })
     : useEditCustomer({ id });

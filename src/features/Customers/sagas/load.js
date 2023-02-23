@@ -1,4 +1,4 @@
-import { all, put, select, delay, takeLatest, call } from 'redux-saga/effects';
+import { put, delay, takeLatest, call } from 'redux-saga/effects';
 import * as actions from '../reducers';
 import { fetchCustomersData } from '../../../utilities/_DATA';
 import { set, get } from '../../../utilities/async_storage';

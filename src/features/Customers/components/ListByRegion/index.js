@@ -12,25 +12,18 @@ const ListByRegion = () => {
   const { params } = useRoute();
   const { region } = params;
   if (!region) return null;
-  console.log('REGION: ', region);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(actions.loadCustomers());
   }, [dispatch]);
 
   const customers = useSelector((state) => {
-    console.log('DENTRO DE SELECTOR: ', state.customers.customers);
     return state.customers.customers;
   });
-  console.log('Customers data Fuera DE SELECTOR: ', customers);
   const filteredCustomers = customers.filter(
     (customer) => customer.region === region
   );
 
-  console.log('FILTERED CUSTOMERS: ', filteredCustomers);
-  const onSubmit = () => {
-    // TODO
-  };
   const styles = stylesFn();
   return (
     <View style={styles.container}>

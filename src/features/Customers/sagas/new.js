@@ -30,6 +30,6 @@ export function* takeCreateCustomer(action) {
     yield put(actions.createCustomerResult(result));
   } catch (error) {
     yield put(actions.createCustomerError(error.toString()));
-    console.log('ERROR!!!!!!!!: ', error);
+    console.log('ERROR!: ', error);
   }
 }

@@ -1,4 +1,4 @@
-import { all, put, select, takeLatest, delay } from 'redux-saga/effects';
+import { put, select, takeLatest, delay } from 'redux-saga/effects';
 import * as actions from '../reducers';
 import { set } from '../../../utilities/async_storage';
 
@@ -8,17 +8,10 @@ export function* watchEditCustomer() {
 
 export function* takeEditCustomer(action) {
   const { id } = action.payload;
-  console.log('Starting fetch request to API -- EDIT, id: ', id);
 
   try {
     const fields = yield select((state) => state.customers.form.fields);
     const customers = yield select((state) => state.customers.customers);
-    console.log(
-      'FETCHING REQUEST, fields: ',
-      fields,
-      ' CUSTOMERS: ',
-      customers
-    );
 
     const result = customers.map((customer) => {
       // if customer is not the one being updated, return it unchanged

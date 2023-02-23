@@ -1,5 +1,5 @@
 import React from 'react';
-import { ScrollView, SafeAreaView } from 'react-native';
+import { SafeAreaView } from 'react-native';
 import ListByRegion from '../../features/Customers/components/ListByRegion';
 import stylesFn from '../../components/styles';
 

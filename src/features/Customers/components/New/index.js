@@ -1,11 +1,5 @@
 import React from 'react';
-import {
-  StyleSheet,
-  View,
-  Text,
-  TextInput,
-  TouchableOpacity,
-} from 'react-native';
+import { View, Text } from 'react-native';
 import stylesFn from '../../../../components/styles';
 import Form from '../../../../components/Form';
 import { useDispatch } from 'react-redux';

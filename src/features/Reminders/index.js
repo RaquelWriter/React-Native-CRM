@@ -96,14 +96,6 @@ const Reminders = () => {
     const hour = dateSchedule.getHours();
     const minute = dateSchedule.getMinutes();
 
-    console.warn(
-      'Time picked: ',
-      time,
-      'Tiempo, horas: ',
-      diffInHours,
-      ' minutos: ',
-      diffInMinutes
-    );
     onSubmit(hour, minute);
     setNotificationText(
       `Your reminder is set to ${String(hour).padStart(2, '0')}:${String(
