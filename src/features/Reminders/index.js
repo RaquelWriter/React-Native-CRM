@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import { AsyncStorage } from 'react-native';
 import { Keyboard, View, Text, TouchableOpacity } from 'react-native';
 import stylesFn from '../../components/styles';
@@ -7,9 +8,12 @@ import * as Notifications from 'expo-notifications';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 
 // Reminders
-const clientOfToday = ['Juan', 'Rosa'];
 
 const Reminders = () => {
+  const clients = useSelector((state) => {
+    return state.customers.customers.map((c) => `${c.firstName} ${c.lastName}`);
+  });
+  const clientOfToday = clients[Math.floor(Math.random() * clients.length)];
   const styles = stylesFn();
   const [isTimePickerVisible, setTimePickerVisibility] = useState(true);
   const [notificationText, setNotificationText] = useState(
@@ -37,10 +41,8 @@ const Reminders = () => {
     Keyboard.dismiss();
     const schedulingOptions = {
       content: {
-        title: `Time to call this client: ${
-          clientOfToday[Math.floor(Math.random() * clientOfToday.length)]
-        }`,
-        body: 'Open CRM to find out more info about this client',
+        title: 'Open CRM:',
+        body: `Time to call: ${clientOfToday}`,
         sound: true,
         priority: Notifications.AndroidNotificationPriority.HIGH,
         color: 'blue',
