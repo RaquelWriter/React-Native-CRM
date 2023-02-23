@@ -2,7 +2,7 @@
 
 React Native CRM with [Expo framework](https://expo.dev/).
 
-<img src="https://raquelventero.com/images/react-native-crm-sc/sc_01.jpg">
+<img src="https://raquelventero.com/images/react-native-crm-sc/sc_01.jpg" width="50">
 
 ## Run project in development mode
 
