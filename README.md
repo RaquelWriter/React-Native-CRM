@@ -38,7 +38,7 @@ In this app, I am using the following libraries:
 
 Since this is a front-end only app, there is no backend. In this app, the fetch calls are simulated and the data is stored locally on the device. This means that the app does not make any actual network requests.
 The fetch calls in this app are managed using sagas files, which make it easy to handle asynchronous operations. To use a real fetch API instead of the simulated data, it's easy to modify the sagas files to make network requests.
-An initial customers database is included in the app:
+The customers database is empty in the begining. It follows this sample structure:
 
 customers: [
 &ensp;{
@@ -56,6 +56,16 @@ customers: [
 &ensp;&ensp;region: 'North West'
 &ensp;}
 ]
+
+And the regions database:
+
+regions = [
+'South West',
+'North West',
+'South East',
+'North East',
+'Mid West',
+];
 
 ## Features
 
