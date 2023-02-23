@@ -91,8 +91,8 @@ const Reminders = () => {
     const diffInMs = myDate - dateSchedule; // diff in Miliseconds
     const diffInHours = Math.floor(diffInMs / (1000 * 60 * 60)); // to hours
     const diffInMinutes = Math.floor((diffInMs / (1000 * 60)) % 60); // to minutes
-    const hour = dateSchedule.getHours();
-    const minute = dateSchedule.getMinutes();
+    const hour = String(dateSchedule.getHours()).padStart(2, '0');
+    const minute = String(dateSchedule.getMinutes()).padStart(2, '0');
     console.warn(
       'Time picked: ',
       time,
