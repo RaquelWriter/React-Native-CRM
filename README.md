@@ -31,6 +31,8 @@ In this app, I am using the following libraries:
 - [Redux Toolkit](https://www.npmjs.com/package/@reduxjs/toolkit). This library, evolution of Redux, is used for managing the state of the app. It provides a centralized store for storing the state, which can be accessed from any component in the app. This helps to maintain a single source of truth for the app's data, making it easier to manage and update.
 - [Redux Saga](https://www.npmjs.com/package/redux-saga). This library is used for managing asynchronous functions, especially those that fetch data from a database and store it in the app. It allows us to manage complex workflows and handle errors more easily. By using sagas, we can keep our code organized and easy to maintain.
 - [react-navigation/stack](https://www.npmjs.com/package/@react-navigation/stack). For allowing a navigation system between screens.
+- [react-native-modal-datetime-picker](https://www.npmjs.com/package/react-native-modal-datetime-picker), for choose hour:minute for the notification.
+- [react-native-picker/picker](https://www.npmjs.com/package/@react-native-picker/picker), for the regions selector.
 
 ## Database
 
@@ -60,9 +62,9 @@ customers: [
 - All the data is stored in the device and it's persistent even with the app closed.
 - There is a reset button on the Welcome screen to clear all the data introduced by the user and reset with only the initial data.
 - The user can: read regions, read clients, and read the data of the clients.
-- The user can modify the clients, and add new ones, with the same form component.
+- The user can modify the clients data, and add new ones, with the same form component.
 - The user can choose a time (hour: minutes) to create a push notification, which will be repeated every day at the same time.
-- The user can delete the notification.
+- The user can cancel the notification.
 
 ## Todos
 
