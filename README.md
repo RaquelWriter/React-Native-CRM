@@ -2,7 +2,8 @@
 
 React Native CRM with [Expo framework](https://expo.dev/).
 
-<img src="https://raquelventero.com/images/react-native-crm-sc/sc_01.jpg" width="250">
+<img src="https://raquelventero.com/images/react-native-crm-sc/sc_01.jpg" width="250" alt="Edit customers"> &nbsp; <img src="https://raquelventero.com/images/react-native-crm-sc/sc_02.jpg" width="250" alt="List of regions">&nbsp; <img src="https://raquelventero.com/images/react-native-crm-sc/sc_03.jpg" width="250" alt="Add new customer feature">&nbsp; <img src="https://raquelventero.com/images/react-native-crm-sc/sc_04.jpg" width="250" alt="List of customers by region">&nbsp;
+<img src="https://raquelventero.com/images/react-native-crm-sc/sc_05.jpg" width="250" alt="Edit push notification">
 
 ## Run project in development mode
 
